@@ -3,7 +3,7 @@ import './home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:notes_app_flutter/presentation/controllers/auth_controller.dart';
-import 'package:notes_app_flutter/presentation/screens/auth.dart';
+import 'package:notes_app_flutter/presentation/screens/login.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -26,7 +26,7 @@ class _SplashScreenState extends State<Splash> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 3), () {
-      Get.to(authController.isLoggedIn ? const Home() : const Auth());
+      Get.to(authController.isLoggedIn ? const Home() : LoginWidget());
     });
   }
 

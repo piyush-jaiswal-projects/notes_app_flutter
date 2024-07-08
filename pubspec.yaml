@@ -23,4 +23,5 @@ flutter:
   assets:
     - assets/images/note.png
     - assets/images/pxfuel.jpg
+    - assets/images/authBg.jpg
 
