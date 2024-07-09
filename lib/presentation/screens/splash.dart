@@ -26,7 +26,7 @@ class _SplashScreenState extends State<Splash> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 3), () {
-      Get.to(authController.isLoggedIn ? const Home() : LoginWidget());
+      Get.to(authController.isLoggedIn ? Home() : LoginWidget());
     });
   }
 

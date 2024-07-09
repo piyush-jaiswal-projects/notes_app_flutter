@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'presentation//screens/splash.dart';
 import 'package:get/get.dart';
 import 'presentation/controllers/auth_controller.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
   runApp(MyApp());
 }
 

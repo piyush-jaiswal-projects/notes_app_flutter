@@ -61,7 +61,7 @@ class LoginWidget extends StatelessWidget {
                     ElevatedButton(
                         onPressed: () {
                           authController.loginUser();
-                          Get.to(const Home());
+                          Get.to(Home());
                         },
                         child: const Text("Login", style: TextStyle(fontSize: 18, color: Colors.black)),),
                     const SizedBox(height: 20,),

@@ -75,7 +75,7 @@ class SignupWidget extends StatelessWidget {
                     ElevatedButton(
                         onPressed: () {
                           authController.signupUser();
-                          Get.to(const Home());
+                          Get.to(Home());
                         },
                         child: const Text("Signup", style: TextStyle(fontSize: 18),),),
                     const SizedBox(height: 20,),
