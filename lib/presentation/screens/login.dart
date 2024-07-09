@@ -10,6 +10,9 @@ class LoginWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
+
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -33,38 +36,48 @@ class LoginWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     TextField(
+                        controller: emailController,
                         decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding: const EdgeInsets.all(10),
-                      hintText: "Email",
-                      hintStyle:
-                          const TextStyle(color: Colors.black54, fontSize: 18),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide.none),
-                    )),
-                    const SizedBox(height: 10,),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding: const EdgeInsets.all(10),
+                          hintText: "Email",
+                          hintStyle: const TextStyle(
+                              color: Colors.black54, fontSize: 18),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none),
+                        )),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     TextField(
+                        controller: passwordController,
                         decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding: const EdgeInsets.all(10),
-                      hintText: "Password",
-                      hintStyle:
-                          const TextStyle(color: Colors.black54, fontSize: 18),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide.none),
-                    )),
-                    const SizedBox(height: 20,),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding: const EdgeInsets.all(10),
+                          hintText: "Password",
+                          hintStyle: const TextStyle(
+                              color: Colors.black54, fontSize: 18),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none),
+                        )),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     ElevatedButton(
-                        onPressed: () {
-                          authController.loginUser();
-                          Get.to(Home());
-                        },
-                        child: const Text("Login", style: TextStyle(fontSize: 18, color: Colors.black)),),
-                    const SizedBox(height: 20,),
+                      onPressed: () {
+                        authController.loginUser(emailController.text.trim(),
+                            passwordController.text.trim());
+                      },
+                      child: const Text("Login",
+                          style: TextStyle(fontSize: 18, color: Colors.black)),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     const Text("Don't have an account? "),
                     GestureDetector(
                       onTap: () {
@@ -72,7 +85,8 @@ class LoginWidget extends StatelessWidget {
                       },
                       child: const Text(
                         "Create New Account",
-                        style: TextStyle(fontSize: 20, decoration: TextDecoration.underline),
+                        style: TextStyle(
+                            fontSize: 20, decoration: TextDecoration.underline),
                       ),
                     )
                   ],

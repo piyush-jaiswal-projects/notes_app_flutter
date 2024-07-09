@@ -5,15 +5,19 @@ import 'package:notes_app_flutter/presentation/controllers/notes_controllers.dar
 import 'package:notes_app_flutter/presentation/screens/login.dart';
 import 'package:notes_app_flutter/presentation/widgets/add_button.dart';
 import 'package:notes_app_flutter/presentation/widgets/notes_card.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class Home extends StatelessWidget {
   Home({super.key});
+  FirebaseAuth auth = FirebaseAuth.instance;
   final AuthController authController = Get.find<AuthController>();
   final NotesRepository notesRepository = Get.put(NotesRepository());
 
   @override
   Widget build(BuildContext context) {
+    User? user = auth.currentUser;
+    var userName = user?.displayName;
     var count = notesRepository.getAllNotes().length;
     return Scaffold(
       appBar: PreferredSize(
@@ -23,11 +27,13 @@ class Home extends StatelessWidget {
           actions: [
             PopupMenuButton<String>(
               onSelected: (String value) {
-                // Handle menu item selection
-                print("Selected: $value");
                 if (value == "Logout") {
                   authController.logoutUser();
                   Get.to(LoginWidget());
+                }
+                else if (value == "Home") {
+                  authController.logoutUser();
+                  Get.to(Home());
                 }
               },
               color: Colors.white,
@@ -42,7 +48,7 @@ class Home extends StatelessWidget {
               },
             ),
           ],
-          title: Text("Notes ($count)"),
+          title: Text("$userName's Notes ($count)"),
         ),
       ),
       body: Stack(
@@ -53,8 +59,7 @@ class Home extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(10, 10, 10, 40),
             child: Center(
               child: SingleChildScrollView(
-                child: Wrap(
-                    ),
+                child: Wrap(),
               ),
             ),
           ),

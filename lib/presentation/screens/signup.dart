@@ -4,10 +4,12 @@ import 'package:notes_app_flutter/presentation/controllers/auth_controller.dart'
 import 'package:notes_app_flutter/presentation/screens/home.dart';
 import 'package:notes_app_flutter/presentation/screens/login.dart';
 
-
 class SignupWidget extends StatelessWidget {
   SignupWidget({super.key});
   final AuthController authController = Get.find<AuthController>();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,51 +36,68 @@ class SignupWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     TextField(
+                        controller: _nameController,
                         decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding: const EdgeInsets.all(10),
-                      hintText: "Name",
-                      hintStyle:
-                          const TextStyle(color: Colors.black54, fontSize: 18),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide.none),
-                    )),
-                    const SizedBox(height: 10,),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding: const EdgeInsets.all(10),
+                          hintText: "Name",
+                          hintStyle: const TextStyle(
+                              color: Colors.black54, fontSize: 18),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none),
+                        )),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     TextField(
+                        controller: _emailController,
                         decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding: const EdgeInsets.all(10),
-                      hintText: "Email",
-                      hintStyle:
-                          const TextStyle(color: Colors.black54, fontSize: 18),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide.none),
-                    )),
-                    const SizedBox(height: 10,),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding: const EdgeInsets.all(10),
+                          hintText: "Email",
+                          hintStyle: const TextStyle(
+                              color: Colors.black54, fontSize: 18),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none),
+                        )),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     TextField(
+                        controller: _passwordController,
                         decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding: const EdgeInsets.all(10),
-                      hintText: "Password",
-                      hintStyle:
-                          const TextStyle(color: Colors.black54, fontSize: 18),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide.none),
-                    )),
-                    const SizedBox(height: 20,),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding: const EdgeInsets.all(10),
+                          hintText: "Password",
+                          hintStyle: const TextStyle(
+                              color: Colors.black54, fontSize: 18),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none),
+                        )),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     ElevatedButton(
-                        onPressed: () {
-                          authController.signupUser();
-                          Get.to(Home());
-                        },
-                        child: const Text("Signup", style: TextStyle(fontSize: 18),),),
-                    const SizedBox(height: 20,),
+                      onPressed: () {
+                        authController.signupUser(
+                            _nameController.text.trim(),
+                            _emailController.text.trim(),
+                            _passwordController.text.trim());
+                      },
+                      child: const Text(
+                        "Signup",
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     const Text("Already have an account? "),
                     GestureDetector(
                       onTap: () {
@@ -86,7 +105,8 @@ class SignupWidget extends StatelessWidget {
                       },
                       child: const Text(
                         "Login here",
-                        style: TextStyle(fontSize: 20, decoration: TextDecoration.underline),
+                        style: TextStyle(
+                            fontSize: 20, decoration: TextDecoration.underline),
                       ),
                     )
                   ],
