@@ -63,16 +63,16 @@ class LoginWidget extends StatelessWidget {
                           authController.loginUser();
                           Get.to(const Home());
                         },
-                        child: const Text("Login", style: TextStyle(fontSize: 18)),),
+                        child: const Text("Login", style: TextStyle(fontSize: 18, color: Colors.black)),),
                     const SizedBox(height: 20,),
-                    const Text("Don't have account? "),
+                    const Text("Don't have an account? "),
                     GestureDetector(
                       onTap: () {
                         Get.to(SignupWidget());
                       },
                       child: const Text(
-                        "Create Account",
-                        style: TextStyle(fontSize: 25),
+                        "Create New Account",
+                        style: TextStyle(fontSize: 20, decoration: TextDecoration.underline),
                       ),
                     )
                   ],

@@ -79,14 +79,14 @@ class SignupWidget extends StatelessWidget {
                         },
                         child: const Text("Signup", style: TextStyle(fontSize: 18),),),
                     const SizedBox(height: 20,),
-                    const Text("Already have a account? "),
+                    const Text("Already have an account? "),
                     GestureDetector(
                       onTap: () {
                         Get.to(LoginWidget());
                       },
                       child: const Text(
                         "Login here",
-                        style: TextStyle(fontSize: 25),
+                        style: TextStyle(fontSize: 20, decoration: TextDecoration.underline),
                       ),
                     )
                   ],
